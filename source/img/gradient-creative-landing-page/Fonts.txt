@@ -1,0 +1,9 @@
+Fonts used in this design:
+
+Font: Fira Sans
+Author: Mozilla
+Url: http://www.fontsquirrel.com/fonts/fira-sans
+
+Font: Lato
+Author: tyPoland Lukasz Dziedzic
+Url: http://www.fontsquirrel.com/fonts/lato
