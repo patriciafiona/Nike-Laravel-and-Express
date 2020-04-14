@@ -16,7 +16,7 @@
                                         <h2 class="mb-0">List Photos</h2>
                                     </div>
                                     <div class="col-md-2">
-                                        <a href ="/photos/input" class="btn btn-sm btn-primary">Insert</a>
+                                        <a href ="/photos/input_stockId" class="btn btn-sm btn-primary">Insert</a>
                                     </div>
                                 </div>
                             </div>
@@ -37,6 +37,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($photos as $p)
+                                        <tr>
+                                            <th scope="row"> {{$p->id}} </th>
+                                            <td data-toggle="tooltip" data-placement="top" title="{{$p->stock_id}}"> {{Str::limit($p->stock_id,10, $end='...')}} </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a href ="stock/view/{{$p->id}}" class="btn btn-sm btn-primary">View</a>
+                                                <a href ="stock/edit/{{$p->id}}" class="btn btn-sm btn-warning">Edit</a>
+                                                <form action="stock/delete/{{$p->id}}" method="post" style="display:inline-block;">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

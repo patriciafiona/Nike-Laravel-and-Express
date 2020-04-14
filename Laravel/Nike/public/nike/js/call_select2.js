@@ -30,7 +30,7 @@ $(document).ready(function() {
         templateResult : function (repo){
           if(repo.loading) return repo.name;
 
-          var markup = "("+repo.id+") &nbsp; "+ repo.name;
+          var markup = "[ID:"+repo.id+"] &nbsp; "+ repo.name;
 
           return markup;
         },

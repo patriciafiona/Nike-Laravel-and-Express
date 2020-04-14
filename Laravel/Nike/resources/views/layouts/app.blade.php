@@ -18,10 +18,12 @@
         <!-- Argon CSS -->
         <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
         <!-- Tambahan CSS -->
-        <link rel="stylesheet" type="text/css" href="{{ url('/css/tambahan.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url('nike/css/tambahan.css') }}" />
         <!--Select2-->
         <link href="{{ asset('select2') }}/dist/css/select2.min.css" rel="stylesheet" />
-        <!---->
+        <!--dropzone-->
+        <link href="{{ asset('dropzone/dist') }}/dropzone.css " rel="stylesheet" />
+        <link href="{{ asset('dropzone/dist/min') }}/dropzone.min.css" rel="stylesheet">
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
@@ -44,7 +46,10 @@
         <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
         <script src="{{ asset('select2') }}/dist/js/select2.min.js"></script>
-        <script src="{{ asset('js') }}/call_select2.js"></script>
+        <script src="{{ asset('nike/js') }}/call_select2.js"></script>
+
+        <script src="{{ asset('dropzone/dist/min') }}/dropzone.min.js"></script>
+        <script src="{{ asset('nike/js') }}/dropzone-config.js"></script>
         
         @stack('js')
         

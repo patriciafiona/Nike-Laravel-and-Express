@@ -28,7 +28,55 @@ class PhotoController extends Controller
     public function create()
     {
         $stock = Stock::all();
-        return view ('photo.insert', compact('stock'));
+        return view ('photo.insert_01', compact('stock'));
+    }
+
+    public function add_photo(Request $request)
+    {
+        $stock_id = $request->stock_id;
+        $stock = Stock::find($stock_id);
+        return view ('photo.insert_02', compact('stock'));
+        
+    }
+
+    public function fileStore(Request $request)
+    {
+        //bagian save ke blob
+        $photo = new Photo();
+
+        $file = $request->file('file');
+        // Get the contents of the file
+        $contents = $file->openFile()->fread($file->getSize());
+        
+        $image = $request->file('file');
+        $imageName = $image->getClientOriginalName();
+
+        // Store the contents to the database
+        $photo->file = $contents;
+        $photo->stock_id = $request->stock_id;
+        $photo->filename = $imageName;
+        $photo->save();
+
+        //pindahin ke public folder        
+        $image->move(public_path('nike/photos'),$imageName);
+
+        if(!$photo){
+            App::abort(500, 'Error');
+        }else{
+            return response()->json(['success'=>$imageName]);
+        }
+
+    }
+
+    public function fileDestroy(Request $request)
+    {
+        $filename =  $request->get('filename');
+        Photo::where('filename',$filename)->delete();
+        $path=public_path().'/nike/photos/'.$filename;
+        if (file_exists($path)) {
+            unlink($path);
+        }
+        return $filename;  
     }
 
     /**

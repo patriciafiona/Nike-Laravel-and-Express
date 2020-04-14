@@ -65,13 +65,16 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Route Photo Data Page
 	Route::get('/photos', 'PhotoController@index')->name('photos');;
-	Route::get('/photos/input', 'PhotoController@create');
+	Route::get('/photos/input_stockId', 'PhotoController@create')->name('choose_id');
 	Route::get('/photos/edit/{id}', 'PhotoController@edit');
 	
 	Route::delete('/photos/delete/{id}', 'PhotoController@destroy');
 
-	Route::post('/photos/new', 'PhotoController@store');
+	Route::post('/photos/input_photo', 'PhotoController@add_photo');
+	Route::post('/photos/new', 'PhotoController@fileStore')->name('store_photo');
 	Route::post('/photos/edit/{id}', 'PhotoController@update');
+	
+	Route::post('/photos/delete', 'PhotoController@fileDestroy');
 
 	//Proses hasil select 2
 	Route::get('/search/stock_id', function(){

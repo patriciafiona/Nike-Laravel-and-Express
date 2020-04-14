@@ -7,7 +7,7 @@
                 <div class="row justify-content-center">
                     <div id="video-player">
                         <video autoplay muted loop>
-                            <source src="{{ asset('/video/Home Video.mp4') }}" type="video/mp4">
+                            <source src="{{ asset('nike/video/Home Video.mp4') }}" type="video/mp4">
                         </video>
                     </div>
                     <div id="overlay">

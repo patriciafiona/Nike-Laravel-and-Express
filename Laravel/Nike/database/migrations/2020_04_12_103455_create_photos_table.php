@@ -17,7 +17,8 @@ class CreatePhotosTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('stock_id')->unsigned();
             $table->foreign('stock_id')->references('id')->on('stocks');
-            $table->binary('photo');
+            $table->binary('file');
+            $table->string('filename');
             $table->timestamps();
         });
     }
