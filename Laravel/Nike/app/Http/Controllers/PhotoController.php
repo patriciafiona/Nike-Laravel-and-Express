@@ -16,7 +16,15 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        $photos = Photo::paginate(5);
+        
+        $photos = DB::table('photos')
+        ->join('stocks', 'photos.stock_id', '=', 'stocks.id')
+        ->select('photos.id', 'photos.stock_id', 'photos.file', 
+                'stocks.name as stock_name', 'stocks.tag_id as stock_tag', 
+                'stocks.describe as stock_desc')
+        ->groupBy('photos.stock_id')
+        ->paginate(9);
+
         return view ('photo.index', compact('photos'));
     }
 

@@ -23,25 +23,14 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        @foreach($photos->chunk(3) as $pp)
-                            <div class="row">
-                                @foreach($pp as $p)
-                                <div class="col-md-4">
-                                    <div class="card" style="width: 17rem;margin-bottom:15px;">
-                                        <?php echo '<img class="card-img-top" alt="..." src="data:image/jpeg;base64,'. base64_encode($p->file) .'"/>' ?>
-                                        <div class="card-body">
-                                            <h3 class="card-title">{{$p->stock_name}}</h3>
-                                            <p class="text-black" style="font-size:12px; text-align:justify;"> 
-                                                {{ Str::limit($p->stock_desc,150, $end='...') }} 
-                                            </p>
-                                            <a href="#" class="btn btn-sm btn-primary">Detail</a>
-                                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
+                        <div class="card" style="width: 18rem;">
+                            <?php echo '<img class="card-img-top" alt="..." src="data:image/jpeg;base64,'. base64_encode($p->file) .'"/>' ?>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text text-black">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
                             </div>
-                        @endforeach
+                        </div>
                         <div class="card-footer">
                             {{ $photos->links() }}
                         </div>
