@@ -40,6 +40,9 @@
                             <input type="hidden" name="stock_id" value="{{$stock->id}}"/>
                         </form>   
                         <div class="row form-mv">
+                            <p class="text-red">* You can remove photo in Photo->Detail Page</p>
+                        </div>
+                        <div class="row form-mv">
                             <a href="/photos" class="btn btn-danger">Finish</a>
                         </div>
                     </div>

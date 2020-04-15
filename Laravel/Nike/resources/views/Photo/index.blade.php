@@ -31,10 +31,12 @@
                                         <?php echo '<img class="card-img-top" alt="..." src="data:image/jpeg;base64,'. base64_encode($p->file) .'"/>' ?>
                                         <div class="card-body">
                                             <h3 class="card-title">{{$p->stock_name}}</h3>
-                                            <p class="text-black" style="font-size:12px; text-align:justify;"> 
+                                            <h6>Total Photos: {{$p->total}}</h6>
+                                            <hr style="margin:5px;"/>
+                                            <p class="text-black detail-photos"> 
                                                 {{ Str::limit($p->stock_desc,150, $end='...') }} 
                                             </p>
-                                            <a href="#" class="btn btn-sm btn-primary">Detail</a>
+                                            <a href="/photos/detail/{{$p->stock_id}}" class="btn btn-sm btn-primary">Detail</a>
                                             <a href="#" class="btn btn-sm btn-danger">Delete</a>
                                         </div>
                                     </div>

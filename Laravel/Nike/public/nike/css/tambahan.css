@@ -58,3 +58,27 @@ h1.slogan_title{
 .logo_sidebar{
     width: 150;
 }
+
+/*Photos Page*/
+
+.detail-photos{
+    font-size:12px;
+    text-align:justify;
+}
+
+.form-ph {
+    margin: 0px 10px;
+}
+
+.photo_detail{
+    width: 100px;
+}
+
+.photo_desc_detail{
+    text-align: justify;
+    color: gray;
+}
+
+.view_stock_desc{
+    min-height:300px;
+}

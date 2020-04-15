@@ -66,7 +66,7 @@
                                 <label>Describe</label>
                             </div>
                             <div class="col col-md-6">
-                                <textarea name="describe" class="form-control" style="min-height:300px;" disabled>{{$stock->describe}}</textarea>
+                                <textarea class="form-control view_stock_desc" disabled>{{$stock->describe}}</textarea>
                             </div>
                         </div>
 

@@ -19,7 +19,7 @@ class PhotoController extends Controller
         
         $photos = DB::table('photos')
         ->join('stocks', 'photos.stock_id', '=', 'stocks.id')
-        ->select('photos.id', 'photos.stock_id', 'photos.file', 
+        ->select(DB::raw('count(file) as total'), 'photos.id', 'photos.stock_id', 'photos.file', 
                 'stocks.name as stock_name', 'stocks.tag_id as stock_tag', 
                 'stocks.describe as stock_desc')
         ->groupBy('photos.stock_id')
@@ -78,13 +78,19 @@ class PhotoController extends Controller
 
     public function fileDestroy(Request $request)
     {
-        $filename =  $request->get('filename');
-        Photo::where('filename',$filename)->delete();
-        $path=public_path().'/nike/photos/'.$filename;
+        $name =  $request->get('filename');
+        $photo=Photo::where('filename',$name)->delete();
+
+        $path=public_path().'/nike/photos/'.$name;
         if (file_exists($path)) {
             unlink($path);
         }
-        return $filename;  
+
+        if(!$photo){
+            App::abort(500, 'Error');
+        }else{
+            return $name;  
+        }
     }
 
     /**
@@ -115,9 +121,27 @@ class PhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function detail($id)
     {
-        //
+        $photos = DB::table('photos')
+        ->where('stock_id',$id)
+        ->get();
+
+        $detail = DB::table('photos')
+        ->join('stocks', 'photos.stock_id', '=', 'stocks.id')
+        ->join('categories', 'stocks.category_id', '=', 'categories.id')
+        ->join('tags', 'stocks.tag_id', '=', 'tags.id')
+        ->select(DB::raw('count(file) as total'), 'photos.id', 'photos.stock_id', 
+                'stocks.name as stock_name', 'tags.name as stock_tag', 
+                'categories.name as stock_cat', 
+                'stocks.price', 'stocks.total',
+                'stocks.describe as stock_desc')
+        ->where('stock_id',$id)
+        ->groupBy('photos.stock_id')
+        ->first();
+
+        return view ('photo.detail', compact('photos','detail'));
+
     }
 
     /**

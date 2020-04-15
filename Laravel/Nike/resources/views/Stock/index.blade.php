@@ -44,7 +44,7 @@
                                     <td data-toggle="tooltip" data-placement="top" title="{{$s->name}}"> {{Str::limit($s->name,10, $end='...')}} </td>
                                     <td> {{$s->category->name}} </td>
                                     <td> {{$s->total}} </td>
-                                    <td> {{$s->price}} </td>
+                                    <td> @currency($s->price) </td>
                                     <td> {{$s->tag->name}} </td>
                                     <td> {{ Str::limit($s->describe,10, $end='...') }} </td>
                                     <td>
