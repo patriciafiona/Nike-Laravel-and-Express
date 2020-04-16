@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-xl-4">
                 <div class="card shadow">
-                <div class="card-header bg-transparent">
+                    <div class="card-header bg-transparent">
                         <div class="row align-items-center">
                             <div class="col">
                                 <h6 class="text-uppercase text-muted ls-1 mb-1">Photos</h6>
@@ -30,7 +30,7 @@
                                         <?php echo '<img class="photo_detail" alt="..." src="data:image/jpeg;base64,'. base64_encode($p->file) .'"/>' ?>
                                     </th>
                                     <td>
-                                        <form action="photos/delete/{{$p->id}}" method="post" style="display:inline-block;">
+                                        <form action="../../photos/delete/{{$p->id}}" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             <button type="submit" class="btn btn-sm btn-danger">Delete</button>
@@ -100,6 +100,14 @@
                             </div>
                             <div class="col col-md-8">
                                 <textarea class="form-control view_stock_desc" disabled>{{$detail->stock_desc}}</textarea>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row form-ph">
+                            <div class="col col-md-4"></div>
+                            <div class="col col-md-8">
+                                <a href ="/photos" class="btn btn-sm btn-danger">Back</a>
+                                <a href ="/stock/edit/{{$detail->stock_id}}" class="btn btn-sm btn-warning">Edit</a>
                             </div>
                         </div>
                     </div>

@@ -37,7 +37,10 @@
                                                 {{ Str::limit($p->stock_desc,150, $end='...') }} 
                                             </p>
                                             <a href="/photos/detail/{{$p->stock_id}}" class="btn btn-sm btn-primary">Detail</a>
-                                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                            <form action="photos/deleteAll/{{$p->stock_id}}" method="post" class="inline_block">
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-sm btn-danger">Delete All</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

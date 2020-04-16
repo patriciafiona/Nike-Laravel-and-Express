@@ -72,7 +72,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/photos/new', 'PhotoController@fileStore')->name('store_photo');
 	Route::post('/photos/edit/{id}', 'PhotoController@update');
 	
-	Route::post('/photos/del', 'PhotoController@fileDestroy')->name('undo_photo');
+	Route::post('/photos/deleteAll/{stock_id}', 'PhotoController@destroyAll');
+	Route::delete('/photos/delete/{id}', 'PhotoController@destroy');
 
 	//Proses hasil select 2
 	Route::get('/search/stock_id', function(){

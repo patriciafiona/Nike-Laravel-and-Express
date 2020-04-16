@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use File;
 use App\Photo;
 use App\Stock;
 
@@ -43,7 +44,12 @@ class PhotoController extends Controller
     {
         $stock_id = $request->stock_id;
         $stock = Stock::find($stock_id);
-        return view ('photo.insert_02', compact('stock'));
+
+        $photos = DB::table('photos')
+        ->where('stock_id',$stock_id)
+        ->get();
+
+        return view ('photo.insert_02', compact('stock','photos'));
         
     }
 
@@ -132,7 +138,9 @@ class PhotoController extends Controller
         ->join('categories', 'stocks.category_id', '=', 'categories.id')
         ->join('tags', 'stocks.tag_id', '=', 'tags.id')
         ->select(DB::raw('count(file) as total'), 'photos.id', 'photos.stock_id', 
-                'stocks.name as stock_name', 'tags.name as stock_tag', 
+                'stocks.id as stock_id',
+                'stocks.name as stock_name', 
+                'tags.name as stock_tag', 
                 'categories.name as stock_cat', 
                 'stocks.price', 'stocks.total',
                 'stocks.describe as stock_desc')
@@ -164,6 +172,41 @@ class PhotoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //hasus di folder public
+        $db = Photo::find($id);
+        $image_path = public_path().'/nike/photos/'.$db->filename;  // Value is not URL but directory file path
+        if(File::exists($image_path)) {
+            File::delete($image_path);
+        }
+
+        //hasus di db
+        $photo = Photo::find($id);
+        $photo->delete();
+
+        //kembali ke halaman sebelumnya
+        return redirect()->back();
+    }
+
+    public function destroyAll($stock_id)
+    {
+        //hasus di folder public
+        $db = DB::table('photos')
+        ->where('stock_id',$stock_id)
+        ->get();
+
+        foreach($db as $d){
+            $image_path = public_path().'/nike/photos/'.$d->filename;  // Value is not URL but directory file path
+            if(File::exists($image_path)) {
+                File::delete($image_path);
+            }
+        }
+
+        //kembali ke halaman sebelumnya
+        $photo = DB::table('photos')
+        ->where('stock_id',$stock_id)
+        ->delete();
+
+        //kembali ke halaman sebelumnya
+        return redirect()->back();
     }
 }

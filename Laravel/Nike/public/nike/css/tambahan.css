@@ -82,3 +82,12 @@ h1.slogan_title{
 .view_stock_desc{
     min-height:300px;
 }
+
+.inline_block{
+    display: inline-block;
+}
+
+.photo_warning{
+    margin: 0px;
+    font-size: 10px;
+}
