@@ -1,3 +1,5 @@
 https://select2.org/
 
 https://appdividend.com/2018/05/31/laravel-dropzone-image-upload-tutorial-with-example/
+
+https://medium.com/@rey1024/get-data-menggunakan-axios-pada-react-native-868e19627256
