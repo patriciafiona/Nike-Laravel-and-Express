@@ -50,3 +50,11 @@ Struktur database:
 ![Image of Tags-01](https://github.com/patriciafiona/Nike-Laravel-and-Express/blob/master/Dokumentasi/Laravel/Tag-01.PNG)
 ![Image of Tags-02](https://github.com/patriciafiona/Nike-Laravel-and-Express/blob/master/Dokumentasi/Laravel/Tag-02.PNG)
 ![Image of Tags-03](https://github.com/patriciafiona/Nike-Laravel-and-Express/blob/master/Dokumentasi/Laravel/Tag-03.PNG)
+
+
+### II. Express API
+![Image of Express](https://github.com/patriciafiona/Nike-Laravel-and-Express/blob/master/Dokumentasi/Express%20API/Code%20Run.PNG)
+![Image of Express](https://github.com/patriciafiona/Nike-Laravel-and-Express/blob/master/Dokumentasi/Express%20API/Stock-01.PNG)
+![Image of Express](https://github.com/patriciafiona/Nike-Laravel-and-Express/blob/master/Dokumentasi/Express%20API/Photos-01.PNG)
+![Image of Express](https://github.com/patriciafiona/Nike-Laravel-and-Express/blob/master/Dokumentasi/Express%20API/Photos-02.PNG)
+![Image of Express](https://github.com/patriciafiona/Nike-Laravel-and-Express/blob/master/Dokumentasi/Express%20API/User-01.PNG)
