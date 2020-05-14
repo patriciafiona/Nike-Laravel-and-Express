@@ -1,0 +1,7 @@
+Jangan Lupa Nyalain XAMPP
+
+cd D:\Project\Full Stack Development\Nike Apps\REST API
+
+D:
+
+node index.js

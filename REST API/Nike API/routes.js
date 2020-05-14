@@ -3,6 +3,9 @@
 module.exports = function(app) {
     var todoList = require('./controller');
 
+    var express = require('express');
+    app.use(express.static('public'));  //get photos in public folder
+
     app.route('/')
         .get(todoList.index);
 
@@ -23,4 +26,14 @@ module.exports = function(app) {
     
     app.route('/stocksPhotos/:stock_id/:id')
         .get(todoList.photosDetail_stockid);
+    
+    //Bagian Halaman Home
+    app.route('/home/shoes')
+        .get(todoList.homeShoes);
+
+    app.route('/home/shorts')
+        .get(todoList.homeShorts);
+
+    app.route('/home/touserTights')
+        .get(todoList.homeTouserTights);
 };

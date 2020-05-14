@@ -12,7 +12,7 @@ exports.users = function(req, res) {
         if(error){
             console.log(error)
         } else{
-            response.ok(rows, res)
+            response.ok('users', rows, res)
         }
     });
 };
@@ -24,7 +24,7 @@ exports.products = function(req, res) {
         if(error){
             console.log(error)
         } else{
-            response.ok(rows, res)
+            response.ok('products', rows, res)
         }
     });
 };
@@ -34,7 +34,7 @@ exports.photos = function(req, res) {
         if(error){
             console.log(error)
         } else{
-            response.ok(rows, res)
+            response.ok('photos', rows, res)
         }
     });
 };
@@ -44,7 +44,7 @@ exports.photos_id = function(req, res) {
         if(error){
             console.log(error)
         } else{
-            response.ok(rows, res)
+            response.ok('photos_id', rows, res)
         }
     });
 };
@@ -54,7 +54,7 @@ exports.photos_stockid = function(req, res) {
         if(error){
             console.log(error)
         } else{
-            response.ok(rows, res)
+            response.ok('photos_stockid',rows, res)
         }
     });
 };
@@ -64,7 +64,53 @@ exports.photosDetail_stockid = function(req, res) {
         if(error){
             console.log(error)
         } else{
-            response.ok(rows, res)
+            response.ok('photosDetail_stockid', rows, res)
+        }
+    });
+};
+
+//untuk bagian di home (shortcut 5 barang terbaru)
+exports.homeShoes = function(req, res) {
+    connection.query('SELECT stocks.*, photos.file, photos.filename FROM stocks '+
+                    'INNER JOIN photos ON stocks.id = photos.stock_id '+
+                    "WHERE stocks.category_id = '1' "+
+                    'GROUP BY (stocks.id) '+
+                    'Order BY stocks.updated_at DESC '+
+                    'Limit 5', function (error, rows, fields){
+        if(error){
+            console.log(error)
+        } else{
+            response.ok('homeShoes',rows, res)
+        }
+    });
+};
+
+exports.homeShorts = function(req, res) {
+    connection.query('SELECT stocks.*, photos.file, photos.filename FROM stocks '+
+                    'INNER JOIN photos ON stocks.id = photos.stock_id '+
+                    "WHERE stocks.category_id = '2' "+
+                    'GROUP BY (stocks.id) '+
+                    'Order BY stocks.updated_at DESC '+
+                    'Limit 5', function (error, rows, fields){
+        if(error){
+            console.log(error)
+        } else{
+            response.ok('homeShorts',rows, res)
+        }
+    });
+};
+
+exports.homeTouserTights = function(req, res) {
+    connection.query('SELECT stocks.*, photos.file, photos.filename FROM stocks '+
+                    'INNER JOIN photos ON stocks.id = photos.stock_id '+
+                    "WHERE stocks.category_id = '8' "+
+                    'GROUP BY (stocks.id) '+
+                    'Order BY stocks.updated_at DESC '+
+                    'Limit 5', function (error, rows, fields){
+        if(error){
+            console.log(error)
+        } else{
+            response.ok('homeTouser & Tights',rows, res)
         }
     });
 };
